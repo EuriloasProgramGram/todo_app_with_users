@@ -14,7 +14,7 @@ mixin itemList(header, list)
                 div.actions
                   a(href=`/item/delete/${item.id}` class="btn btn-danger" ) Delete
                   a(href=`item/edit/${item.id}`) Edit
-                  if item.complete
+                  if item.completed
                     a(href=`/item/incomplete/${item.id}`) Mark as Incomplete
                   else
                     a(href=`/item/complete/${item.id}`) Mark as Complete

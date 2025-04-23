@@ -4,8 +4,8 @@ const { Todo } = require('../models');
 module.exports.listAll = async function(req, res) {
     const todos = await Todo.findAll();
 
-    let completeItems = todos.filter(item => item.complete);
-    let incompleteItems = todos.filter(item => !item.complete);
+    let completeItems = todos.filter(item => item.completed);
+    let incompleteItems = todos.filter(item => !item.completed);
 
     res.render('todos/viewAll', {
         completeItems,
@@ -57,7 +57,7 @@ module.exports.deleteItem = async function(req, res) {
 
 
 module.exports.makeItemComplete = async function(req, res) {
-    await Todo.update({ complete:  true}, {
+    await Todo.update({ completed:  true}, {
         where:{
             id: req.params.id,
         }
@@ -67,7 +67,7 @@ module.exports.makeItemComplete = async function(req, res) {
 
 
 module.exports.markItemIncomplete = async function(req, res) {
-    await Todo.update({ complete:  false}, {
+    await Todo.update({ completed:  false}, {
         where:{
             id: req.params.id,
         }
